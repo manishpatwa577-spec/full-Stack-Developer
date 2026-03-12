@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Animal {
+            constructor(name = "hey") {
+                this.name = name
+            }
+            eat() {
+                console.log(this.name, "is eating");
+                
+            }
+            runningSpeed() {
+                console.log(this.name, "is running 10km/h");
+                
+            }
+        }
+        class Cow extends Animal {
+            constructor(name,foodType="veg") {
+                super(name)
+                this.foodType=foodType
+            }
+        }
+        class Dog extends Animal {
+
+        }
+        let animal1 = new Cow("cow","veg");
+        console.log(animal1);
+        animal1.eat();
+        animal1.runningSpeed()
+        let animal2 = new Dog("aaa");
+        console.log(animal2);
+        
+        
+    </script>
+</body>
+</html>

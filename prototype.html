@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    class Bank {
+    constructor(name, balance, age) {
+        this.name = name;
+        this.balance = balance;
+        this.age = age;
+    }
+    deposit(amount) {
+        this.balance += amount;
+        console.log(`Deposited ${amount}. New balance is ${this.balance}`);
+    }
+    withdraw(amount) {
+        if (amount > this.balance) {
+            console.log(`Insufficient balance. Current balance is ${this.balance}`);
+        } else {
+            this.balance -= amount;
+            console.log(`Withdrew ${amount}. New balance is ${this.balance}`);
+        }
+    }
+    getBalance() {
+        console.log(`Current balance is ${this.balance}`);
+    }
+    is18Plus() {
+        return this.age >= 18;
+    }
+    checkBalance() {
+        if (this.is18Plus()) {
+            this.getBalance();
+        } else {
+            console.log("Account holder is under 18. Cannot check balance.");
+        }
+    }
+    getDetails() {
+        console.log(`Name: ${this.name}, Age: ${this.age}, Balance: ${this.balance}`);
+    }
+}
+
+class SavingsAccount extends Bank {
+    constructor(name, balance, age, AccountType = "Savings") {
+        super(name, balance, age);
+        this.AccountType = AccountType;
+    }
+    deposit(amount) {
+        if (amount < 0) {
+            console.log("Deposit amount must be positive.");
+        } else if (amount > 50000) {
+            console.log("Deposit limit exceeded. Maximum deposit is 50000.");
+        }
+        else {
+            super.deposit(amount);
+        }
+    }
+    withdraw(amount) {
+        if (amount > 5000) {
+            console.log("Withdrawal limit exceeded. Maximum withdrawal is 5000.");
+        }
+        else {
+            super.withdraw(amount);
+        }
+    }
+    checkInterestEligibility() {
+        if (this.balance >= 50000 && this.age >= 18) {
+            console.log(`${this.name} is eligible for interest.`);
+        } else {
+            console.log(`${this.name} is not eligible for interest.`);
+        }
+    }
+}
+
+class CurrentAccount extends Bank {
+    constructor(name, balance, age, AccountType = "Current") {
+        super(name, balance, age);
+        this.AccountType = AccountType;
+    }
+    deposit(amount) {
+        if (amount < 0) {
+            console.log("Deposit amount must be positive.");
+        }
+        else if (amount > 200000) {
+            console.log("Deposit limit exceeded. Maximum deposit is 200000.");
+        }
+
+        else {
+            super.deposit(amount);
+        }
+    }
+    withdraw(amount) {
+        if (amount > 100000) {
+            console.log("Withdrawal limit exceeded. Maximum withdrawal is 100000.");
+        }
+        else {
+            super.withdraw(amount);
+        }
+    }
+    checkLoanEligibility() {
+        if (this.balance >= 200000 && this.age >= 21) {
+            console.log(`${this.name} is eligible for a loan.`);
+        } else {
+            console.log(`${this.name} is not eligible for a loan.`);
+        }
+    }
+}
+
+const savingsAcc = new SavingsAccount("pritam", 0, 22);
+const currentAcc = new CurrentAccount("manish", 0, 20);
+savingsAcc.deposit(40000);
+savingsAcc.deposit(40000);
+savingsAcc.withdraw(3000);
+savingsAcc.checkInterestEligibility();
+console.log(savingsAcc, currentAcc);
+currentAcc.deposit(200000);
+currentAcc.withdraw(100000);
+currentAcc.checkLoanEligibility();
+savingsAcc.withdraw(10000);
+</script>
+</body>
+</html>

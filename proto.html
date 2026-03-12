@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Script</h1>
+    <script>
+        let userFunction = {
+            about: function () {
+                console.log(this.fName,this.lName, "dkfjgdfk");
+                
+            },
+            is18: function (){
+                return this.age >= 18;
+            },
+            isLoanAoolicable: function () {
+                return "ha"
+            }
+        }
+        function CreateUser (fName,lName,age,email,address) {
+            let user = Object.create(CreateUser.prototype)
+            user.fName=fName;
+            user.lName=lName;
+            user.age=age;
+            user.address=address;
+            user.email=email
+        }
+        CreateUser.prototype.about = function () {
+            console.log(this.fName,this.lName, "kjhgfksj");
+            
+        }
+         CreateUser.prototype.is18 = function () {
+            return this.age >=18;
+            
+        }
+         CreateUser.prototype.isLoanAoolicable = function () {
+            return "ha"
+            
+        }
+        let user1 = CreateUser("pritam","gupta","12","pritamgupta9911@gmail.com","sydgfj");
+        let user2 = CreateUser("sumit","gupta","25","sumitgupta8811@gmail.com","sdyhuyg");
+        console.log(CreateUser.prototype);
+        function sayHello() {
+            
+        }
+        sayHello.prototype.about= function () {
+            console.log(this.fName,this.lName,"sfsfsrfg");
+            
+        }
+        console.log(sayHello.prototype);
+        function CreateUserNew(fName,lName,age,email,address) {
+            this.fName= fName;
+            this.lName=lName;
+            this.age=age;
+            this.address=address;
+            this.email=email
+            this.about = function () {
+                console.log(this.fName,this.lName,"fgsdg");
+                
+            },
+            this.is18 = function () {
+                return this.age >=18;
+            },
+            this.isLoanAoolicable = function () {
+                return "ha"
+            }
+            
+        }
+        let userRaunak = new CreateUserNew("raunak","bamhotra",18,"sfgdfj@gamil.com","fgsdfg")
+        console.log(userRaunak);
+        
+        
+        
+    </script>
+</body>
+</html>
